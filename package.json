@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "firebase-tools": "^9.10.0",
+    "postcss": "^8.2.10",
     "prettier": "2.2.1"
   },
   "repository": {
