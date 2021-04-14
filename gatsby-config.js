@@ -6,18 +6,11 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.API_URL || "http://localhost:1337",
-        contentTypes: ["article", "category", "author"],
-        singleTypes: [`homepage`, `global`],
+        contentTypes: ["Article", "Category"],
+        singleTypes: [`Homepage`, `Global`],
         queryLimit: 1000,
       },
     },
@@ -32,7 +25,7 @@ module.exports = {
         background_color: "#663399",
         theme_color: "#663399",
         display: "minimal-ui",
-        icon: `src/images/gatsby-icon.png`,
+        icon: `src/images/gatsbyjs-icon.png`,
       },
     },
     "gatsby-plugin-offline",
