@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper,
+.wrapper {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+}
+
+.main-wrapper {
+  display: grid;
+  grid-template-rows: 1fr 100px;
+  grid-template-columns: 1fr;
+}

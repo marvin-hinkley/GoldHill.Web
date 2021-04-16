@@ -6,12 +6,14 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     {
-      resolve: "gatsby-source-strapi",
+      resolve: "gatsby-source-graphql",
       options: {
-        apiURL: process.env.API_URL || "http://localhost:1337",
-        contentTypes: ["Article", "Category"],
-        singleTypes: [`Homepage`, `Global`],
-        queryLimit: 1000,
+        // Arbitrary name for the remote schema Query type
+        typeName: "strapi",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "strapi",
+        // Url to query from
+        url: "http://localhost:1337/graphql",
       },
     },
     {
@@ -23,6 +25,7 @@ module.exports = {
         ],
       },
     },
+    "gatsby-plugin-image",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     {

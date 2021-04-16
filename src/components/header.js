@@ -6,16 +6,16 @@ function Header({ siteTitle }) {
   const [isExpanded, toggleExpansion] = useState(false)
 
   return (
-    <nav className="flex flex-wrap items-center justify-between p-6 mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
-      <div className="flex items-center flex-shrink-0 mr-6 text-white">
+    <nav className="sticky flex flex-wrap items-center justify-between p-6">
+      <div className="flex items-center flex-shrink-0 mr-6">
         <span className="text-xl font-semibold tracking-tight">
-          {siteTitle}
+          {siteTitle}Gold Hill
         </span>
       </div>
       <div className="block lg:hidden">
         <button
           onClick={() => toggleExpansion(!isExpanded)}
-          className="flex items-center px-3 py-2 text-white border border-white rounded hover:text-white hover:border-white"
+          className="flex items-center px-3 py-2 border border-white rounded hover:text-gray-100 hover:border-white"
         >
           <svg
             className="w-3 h-3 fill-current"
@@ -32,27 +32,43 @@ function Header({ siteTitle }) {
           isExpanded ? `block` : `hidden`
         } w-full block flex-grow lg:flex lg:items-center lg:w-auto`}
       >
-        <div className="text-sm lg:flex-grow">
+        <div className="text-sm lg:flex-grow"></div>
+        <div>
+          <Link
+            to={``}
+            className="block mt-4 mr-4 lg:inline-block lg:mt-0 hover:text-gray-100"
+          >
+            Residents
+          </Link>
           <Link
             to={`/`}
-            href="#responsive-header"
-            className="block mt-4 mr-4 text-white lg:inline-block lg:mt-0 hover:text-white"
+            className="block mt-4 mr-4 lg:inline-block lg:mt-0 hover:text-gray-100"
           >
-            Home
+            Government
           </Link>
           <Link
-            to={`/page-2`}
-            className="block mt-4 mr-4 text-white lg:inline-block lg:mt-0 hover:text-white"
+            to={`/`}
+            className="block mt-4 mr-4 lg:inline-block lg:mt-0 hover:text-gray-100"
           >
-            page 2
+            Business
           </Link>
-        </div>
-        <div>
+          <Link
+            to={`/`}
+            className="block mt-4 mr-4 lg:inline-block lg:mt-0 hover:text-gray-100"
+          >
+            About Gold Hill
+          </Link>
           <a
-            href="#download"
+            href="#"
+            className="inline-block px-4 py-2 mt-4 mr-4 text-sm leading-none text-white border border-white rounded hover:border-transparent hover:text-black hover:bg-white lg:mt-0"
+          >
+            Pay Bills Online
+          </a>
+          <a
+            href="#"
             className="inline-block px-4 py-2 mt-4 text-sm leading-none text-white border border-white rounded hover:border-transparent hover:text-black hover:bg-white lg:mt-0"
           >
-            Download
+            Sign in
           </a>
         </div>
       </div>
@@ -65,7 +81,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  siteTitle: `Gold Hill`,
 }
 
 export default Header
