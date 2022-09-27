@@ -3,12 +3,12 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ seo = {} }) => {
+const Seo = ({ seo = {} }) => {
   const { strapi } = useStaticQuery(query)
-  const { defaultSeo, siteName, favicon } = strapi.global
+  const { metaTitle, metaDescription, siteName, favicon } = strapi.global
 
   // Merge default and page-specific SEO values
-  const fullSeo = { ...defaultSeo, ...seo }
+  const fullSeo = { ...{ metaTitle, metaDescription }, ...seo }
 
   const getMetaTags = () => {
     const tags = []
@@ -94,16 +94,16 @@ const SEO = ({ seo = {} }) => {
   )
 }
 
-export default SEO
+export default Seo
 
-SEO.propTypes = {
+Seo.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
   article: PropTypes.bool,
 }
 
-SEO.defaultProps = {
+Seo.defaultProps = {
   title: null,
   description: null,
   image: null,
@@ -114,10 +114,12 @@ const query = graphql`
   query {
     strapi {
       global {
-        SiteName
-        DefaultSEO {
-          MetaTitle
-          MetaDescription
+        data {
+          attributes {
+            SiteName
+            MetaTitle
+            MetaDescription
+          }
         }
       }
     }
