@@ -1,52 +1,48 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import HeroComponent from "../components/hero"
 import QuickLinks from "../components/quick-links"
 import Alerts from "../components/alerts"
+import ArticleGrid from "../components/article-grid"
 
-const IndexPage = ({data}) => {
-  const { hero, alerts } = data.strapi
+const IndexPage = () => {
+  const {
+    allStrapiAlert,
+    allStrapiMeetingAgenda,
+    strapiHero
+  } = useStaticQuery(query);
 
   return (
     <Layout>
       <Seo title="Home" />
-      <HeroComponent hero={hero.data.attributes} />
-      { alerts !== null && <Alerts alerts={alerts.data} />}
+      <HeroComponent hero={strapiHero} />
+      <Alerts alerts={allStrapiAlert.nodes} />
+      <ArticleGrid articles={allStrapiMeetingAgenda.nodes} />
     </Layout>
   )
 }
 
 export const query = graphql`
   query IndexPageQuery {
-    strapi {
-      hero {
-        data {
-          attributes {
-            Title
-            Subtitle
-            Link
-            BackgroundImage {
-              data {
-                attributes {
-                  name
-                  url
-                }
-              }
-            }
-          }
-        }
+    allStrapiAlert {
+      nodes {
+        ...Alert
       }
-      alerts {
-        data {
-          attributes {
-            Title
-            Body
-            Severity
-          }
-        }
+    }
+    allStrapiMeetingAgenda {
+      nodes {
+        ...ArticleCard
+      }
+    }
+    strapiHero {
+      Title
+      Subtitle
+      Link
+      BackgroundImage {
+        url
       }
     }
   }

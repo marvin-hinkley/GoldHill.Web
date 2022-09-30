@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from "gatsby"
 
 const Alert = props => {
   let icon
@@ -33,11 +34,26 @@ const Alert = props => {
         <h1 className={`${foreColor} text-lg`}>{props.alert.Title}</h1>
         <p
           className="text-md"
-          dangerouslySetInnerHTML={{ __html: props.alert.Body }}
+          dangerouslySetInnerHTML={{ __html: props.alert.Body.data.childMarkdownRemark.html }}
         />
       </div>
     </div>
   )
 }
+
+export const query = graphql`
+  fragment Alert on STRAPI_ALERT {
+    id
+    Title
+    Body {
+      data {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+    Severity
+  }
+`
 
 export default Alert
