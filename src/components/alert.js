@@ -43,7 +43,6 @@ const Alert = props => {
 
 export const query = graphql`
   fragment Alert on STRAPI_ALERT {
-    id
     Title
     Body {
       data {

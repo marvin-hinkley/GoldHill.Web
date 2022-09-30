@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 const ArticleCard = ({ article }) => {
   return (
     <Link
-      to={`/`}
+      to={`agenda/${article.Slug}`}
       className="overflow-hidden rounded-lg bg-white shadow-sm transition-shadow hover:shadow-md"
     >
       <div className="px-4 py-4">
@@ -12,9 +12,6 @@ const ArticleCard = ({ article }) => {
           <h3 className="font-bold text-neutral-700">{article.MeetingType} Meeting</h3>
           <span>{article.Date}</span>
         </div>
-        <p className="line-clamp-2 mt-2 text-neutral-500">
-          <Link to={article.Attachments.url}>{article.Attachments.name}</Link>
-        </p>
       </div>
     </Link>
   )
@@ -22,19 +19,10 @@ const ArticleCard = ({ article }) => {
 
 export const query = graphql`
   fragment ArticleCard on STRAPI_MEETING_AGENDA {
+    Slug
     Date
-    Agenda {
-      data {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
+    Title
     MeetingType
-    Attachments {
-      url
-      name
-    }
   }
 `
 

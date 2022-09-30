@@ -8,9 +8,9 @@ function Header({ siteTitle }) {
   return (
     <nav className="sticky flex flex-wrap items-center justify-between p-6">
       <div className="flex items-center flex-shrink-0 mr-6">
-        <span className="text-xl font-semibold tracking-tight">
+        <Link to="/" className="text-xl font-semibold tracking-tight">
           {siteTitle}Gold Hill
-        </span>
+        </Link>
       </div>
       <div className="block lg:hidden">
         <button
