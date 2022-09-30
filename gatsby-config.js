@@ -73,6 +73,5 @@ module.exports = {
         icon: `src/images/gatsbyjs-icon.png`,
       },
     },
-    "gatsby-plugin-offline",
   ],
 }

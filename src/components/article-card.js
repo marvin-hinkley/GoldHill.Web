@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 const ArticleCard = ({ article }) => {
   return (
     <Link
-      to={`agenda/${article.Slug}`}
+      to={`/agenda/${article.Slug}`}
       className="overflow-hidden rounded-lg bg-white shadow-sm transition-shadow hover:shadow-md"
     >
       <div className="px-4 py-4">
